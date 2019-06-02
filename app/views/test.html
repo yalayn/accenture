@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Github Search</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.css">
+    <link rel="stylesheet" href="app/styles/main.css">
+    <link rel="stylesheet" href="app/styles/github_search.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="mainApp">
+
+    <div class="container Home" ng-controller="MainCtrl">
+        <form ng-submit="addTodo()">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="Github-Search">Github <span class="text-style-1">Search</span</label>
+                <div class="input-group">
+                    <input type="text" class="form-control Search-Input" placeholder="Search" ng-model="newTaskText">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default search-button" type="submit">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-resource.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js"></script>
+        <script src="app/scripts/app.js"></script>
+        <script src="app/scripts/controllers/main.js"></script>
+        <!-- <script src="scripts/controllers/services.js"></script> -->
+        <!-- endbuild -->
+</body>
+</html>

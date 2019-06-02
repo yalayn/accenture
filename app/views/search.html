@@ -1,0 +1,59 @@
+<!-- search input -->
+<div class="top-details">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <label-search></label-search>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <form-search></form-search>
+        </div>
+    </div>
+</div>
+<!-- search input -->
+
+<Not-found-data ng-if="notFoundUser"></Not-found-data>
+
+<div class="row" ng-if="!notFoundUser">
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <div class="user-avatar"><img ng-src="{{detailsUser.avatar_url}}"></div>
+        <div class="user-name">{{detailsUser.name}}</div>
+        <div class="text-style-2">{{detailsUser.login}}</div>
+        <div class="details-user">
+
+            <div class="text-style-2">
+                <img src="app/images/icons/followers_icon.png" srcset="app/images/icons/followers_icon@2x.png 2x, app/images/icons/followers_icon@3x.png 3x" class="details-icon">
+                Seguidores: {{detailsUser.followers}}
+            </div>
+            <div class="text-style-2">
+                <img src="app/images/icons/repositorie_icon.png" srcset="app/images/icons/repositorie_icon@2x.png 2x, app/images/icons/repositorie_icon@3x.png 3x" class="details-icon">
+                Seguidos: {{detailsUser.following}}
+            </div>
+            <div class="text-style-2">
+                <img src="app/images/icons/organization_icon.png" srcset="app/images/icons/organization_icon@2x.png 2x, app/images/icons/organization_icon@3x.png 3x" class="details-icon">
+                email: {{detailsUser.email}}
+            </div>
+            <div class="text-style-2">
+                <img src="app/images/icons/location_icon.png" srcset="app/images/icons/location_icon@2x.png 2x, app/images/icons/location_icon@3x.png 3x" class="details-icon">
+                bio: {{detailsUser.bio}}
+            </div>
+            <!-- <div class="text-style-2">
+                <img src="app/images/icons/star_icon.png" srcset="app/images/icons/star_icon@2x.png 2x, app/images/icons/star_icon@3x.png 3x" class="details-icon">
+                {{detailsUser.starCount}}
+            </div> -->
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <Not-found-data ng-if="notFoundRepos"></Not-found-data>
+        <div class="repo-list" ng-if="!notFoundRepos" ng-repeat="(keyRepo, repo) in detailsUserRepos">
+            <label class="repo-name">{{repo.name}}</label>
+            <div class="repo-description">{{repo.description}}</div>
+            <div class="repo-star-count">
+                <img src="app/images/icons/star_icon.png" srcset="app/images/icons/star_icon@2x.png 2x, app/images/icons/star_icon@3x.png 3x" class="details-icon">
+                <span class="star-count">{{repo.stargazers_count}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
