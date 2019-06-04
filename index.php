@@ -18,10 +18,10 @@
             </div>
         </div>
         <!-- script-begin -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/angular/angular-resource.min.js"></script>
         <script src="bower_components/angular/angular-routes-min.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="app/scripts/app.js"></script>
         <script src="app/scripts/controllers/main.js"></script>
         <script src="app/scripts/controllers/services.js"></script>

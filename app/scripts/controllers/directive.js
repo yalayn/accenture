@@ -2,7 +2,7 @@
  * @Author: yordin
  * @Date:   2019-05-30T21:10:41-04:00
  * @Last modified by:   yordin
- * @Last modified time: 2019-06-01T23:42:05-04:00
+ * @Last modified time: 2019-06-04T00:59:18-04:00
  */
 app.directive('formSearch', [function() {
     return {
@@ -13,7 +13,7 @@ app.directive('formSearch', [function() {
 app.directive('notFoundData', [function() {
     return {
         restrict: 'E',
-        template:'<div class="not-found-message" ng-if="!isDetailsUser">{{notFoundMessage}}</div>'
+        template:'<div class="not-found-message">{{notFoundMessage}}</div>'
     };
 }]);
 

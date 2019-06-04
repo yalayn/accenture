@@ -11,8 +11,9 @@
 </div>
 <!-- search input -->
 
-<Not-found-data ng-if="notFoundUser"></Not-found-data>
-
+<div ng-if="notFoundUser">
+    <not-found-data></not-found-data>
+</div>
 <div class="row" ng-if="!notFoundUser">
 
     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
@@ -26,7 +27,7 @@
                 Seguidores: {{detailsUser.followers}}
             </div>
             <div class="text-style-2">
-                <img src="app/images/icons/repositorie_icon.png" srcset="app/images/icons/repositorie_icon@2x.png 2x, app/images/icons/repositorie_icon@3x.png 3x" class="details-icon">
+                <img src="app/images/icons/followers_icon.png" srcset="app/images/icons/followers_icon@2x.png 2x, app/images/icons/followers_icon@3x.png 3x" class="details-icon">
                 Seguidos: {{detailsUser.following}}
             </div>
             <div class="text-style-2">
@@ -37,21 +38,21 @@
                 <img src="app/images/icons/location_icon.png" srcset="app/images/icons/location_icon@2x.png 2x, app/images/icons/location_icon@3x.png 3x" class="details-icon">
                 bio: {{detailsUser.bio}}
             </div>
-            <!-- <div class="text-style-2">
-                <img src="app/images/icons/star_icon.png" srcset="app/images/icons/star_icon@2x.png 2x, app/images/icons/star_icon@3x.png 3x" class="details-icon">
-                {{detailsUser.starCount}}
-            </div> -->
         </div>
     </div>
 
     <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8">
-        <Not-found-data ng-if="notFoundRepos"></Not-found-data>
-        <div class="repo-list" ng-if="!notFoundRepos" ng-repeat="(keyRepo, repo) in detailsUserRepos">
-            <label class="repo-name">{{repo.name}}</label>
-            <div class="repo-description">{{repo.description}}</div>
-            <div class="repo-star-count">
-                <img src="app/images/icons/star_icon.png" srcset="app/images/icons/star_icon@2x.png 2x, app/images/icons/star_icon@3x.png 3x" class="details-icon">
-                <span class="star-count">{{repo.stargazers_count}}</span>
+        <div ng-if="notFoundRepos">
+            <not-found-data ></not-found-data>
+        </div>
+        <div ng-if="!notFoundRepos">
+            <div class="repo-list" ng-repeat="(keyRepo, repo) in detailsUserRepos">
+                <a href="{{repo.html_url}}" target="_"><label class="repo-name">{{repo.name}}</label></a>
+                <div class="repo-description">{{repo.description}}</div>
+                <div class="repo-star-count">
+                    <img src="app/images/icons/star_icon.png" srcset="app/images/icons/star_icon@2x.png 2x, app/images/icons/star_icon@3x.png 3x" class="details-icon">
+                    <span class="star-count">{{repo.stargazers_count}}</span>
+                </div>
             </div>
         </div>
     </div>

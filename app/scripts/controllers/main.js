@@ -3,7 +3,7 @@
  * @Author: yordin
  * @Date:   2019-05-30T21:10:41-04:00
  * @Last modified by:   yordin
- * @Last modified time: 2019-06-02T02:24:26-04:00
+ * @Last modified time: 2019-06-04T00:56:26-04:00
  */
 app.controller("MainCtrl", ["$scope","$location","$routeParams","getResource",function($scope,$location,$routeParams,getResource){
 
@@ -13,35 +13,6 @@ app.controller("MainCtrl", ["$scope","$location","$routeParams","getResource",fu
     $scope.notFoundMessage = "";
     $scope.detailsUser = {};
     $scope.detailsUserRepos = {};
-
-    $scope.numPerPage = 2;
-    $scope.currentPage = 1;
-    $scope.filteredTodos = [];
-
-    $scope.numPages = function () {
-        let numPag = Math.ceil($scope.detailsUserRepos.length / $scope.numPerPage);
-        console.log(numPag);
-        return numPag;
-    };
-
-    // $scope.$watch('detailsUserRepos', function() {
-    //     pagination();
-    // });
-
-    // $scope.$watch('currentPage + numPerPage', function() {
-    //     pagination();
-    // });
-    //
-    // var pagination = function() {
-    //     var begin = (($scope.currentPage - 1) * $scope.numPerPage);
-    //     var end = begin + $scope.numPerPage;
-    //     console.log(begin);
-    //     console.log(end);
-    //     console.log($scope.detailsUserRepos);
-    //     if(Object.keys($scope.detailsUserRepos).length > 0){
-    //         $scope.filteredTodos = $scope.detailsUserRepos.slice(begin, end);
-    //     }
-    // }
 
     /**
      * [Redirect to view with user information]
@@ -56,14 +27,11 @@ app.controller("MainCtrl", ["$scope","$location","$routeParams","getResource",fu
     var getUser = function(){
         $scope.detailsUser = {};
         $scope.notFoundMessage = "User not found :(";
+        $scope.notFoundUser = false;
         getResource.get({username:$scope.searchUsername,type:null}).$promise.then(
             function(response){
-                if( response.$promise.$$state.status == 1){
-                    $scope.detailsUser = response;
-                    getRepos();
-                } else {
-                    $scope.notFoundUser = true;
-                }
+                $scope.detailsUser = response;
+                getRepos();
             },
             function(error){
                 $scope.notFoundUser = true;
@@ -77,6 +45,7 @@ app.controller("MainCtrl", ["$scope","$location","$routeParams","getResource",fu
     var getRepos = function(){
         $scope.detailsUserRepos = {};
         $scope.notFoundMessage = "User repositories not found :(";
+        $scope.notFoundUser = false;
         getResource.query({username:$scope.searchUsername,type:"repos"}).$promise.then(
             function(response){
                 $scope.detailsUserRepos = response;
@@ -88,15 +57,20 @@ app.controller("MainCtrl", ["$scope","$location","$routeParams","getResource",fu
         );
     };
 
+    /**
+     * [order repos for start]
+     */
     var orderRepos = function() {
         $scope.detailsUserRepos.sort(function (a, b){
             return (b.stargazers_count - a.stargazers_count)
         });
     }
 
-    if( !angular.isUndefined($routeParams.username) ){
-        $scope.searchUsername = $routeParams.username;
-        getUser();
+    if( !angular.isUndefined($routeParams) ){
+    	if( !angular.isUndefined($routeParams.username) ){
+		$scope.searchUsername = $routeParams.username;
+		getUser();
+        }
     }
 
 }]);

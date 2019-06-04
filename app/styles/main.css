@@ -18,6 +18,10 @@
   background-color: #ffffff;
 }
 
+label {
+    cursor: pointer !important;
+}
+
 /* SEARCH USER */
 .github-search {
   width: 100%;
